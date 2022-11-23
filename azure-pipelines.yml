@@ -8,6 +8,10 @@ steps:
   inputs:
     versionSpec: '16.x'
 
+- task: TfxInstaller@3
+  inputs:
+    version: 'v0.12.x'
+
 - task: Npm@1
   displayName: 'NPM: Install Extension Dependencies'
   inputs:
