@@ -70,6 +70,7 @@ steps:
     extensionTag: 'dev'
     extensionName: 'Test Report Dev'
     extensionVersion: '1.0.$(Build.BuildId)'
+    updateTasksVersion: false
     extensionVisibility: 'private'
     extensionPricing: 'free'
   condition: and(succeeded(), ne(variables['Build.SourceBranchName'], 'master'))
