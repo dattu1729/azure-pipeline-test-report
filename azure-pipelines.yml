@@ -32,6 +32,14 @@ steps:
     workingDir: tasks/generate-test-report
     verbose: false
 
+- task: Npm@1
+  displayName: 'NPM: Build Task'
+  inputs:
+    command: custom
+    workingDir: tasks/generate-test-report
+    verbose: false
+    customCommand: 'run build'
+
 - task: PackageAzureDevOpsExtension@3
   displayName: 'TFX: Package Extension'
   inputs:
