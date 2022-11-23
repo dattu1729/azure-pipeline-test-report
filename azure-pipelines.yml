@@ -61,25 +61,27 @@ steps:
 - task: PublishAzureDevOpsExtension@3
   displayName: 'TFX: Publish Extension Dev'
   inputs:
-    connectedServiceName: Marketplace
-    rootFolder: .
-    publisherId: dattu
+    connectTo: 'VsTeam'
+    connectedServiceName: 'Marketplace'
+    fileType: 'vsix'
+    vsixFile: '*.vsix'
+    publisherId: 'dattu'
     extensionId: 'azure-pipelines-test-report'
-    extensionTag: dev
+    extensionTag: 'dev'
     extensionName: 'Test Report Dev'
     extensionVersion: '1.0.$(Build.BuildId)'
-    extensionVisibility: private
-    extensionPricing: free
-    patternManifest: 'azure-devops-extension.json'
+    extensionVisibility: 'private'
+    extensionPricing: 'free'
   condition: and(succeeded(), ne(variables['Build.SourceBranchName'], 'master'))
 
 - task: ShareAzureDevOpsExtension@3
   displayName: 'TFX: Share Extension'
   inputs:
-    connectedServiceName: Marketplace
-    method: vsix
+    connectTo: 'VsTeam'
+    connectedServiceName: 'Marketplace'
+    method: 'vsix'
     vsixFile: '**.vsix'
-    accounts: 'dattu-dev'
+    accounts: 'datpaldev'
   condition: and(succeeded(), ne(variables['Build.SourceBranchName'], 'master'))
 
 - task: CopyFiles@2
