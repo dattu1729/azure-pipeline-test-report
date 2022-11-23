@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "120275d4-1fb6-47c6-a707-5baf85442788",
+  "name": "generate-test-report",
+  "friendlyName": "Generate Test Summary Report",
+  "description": "Generate Test Summary Report",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "Dattu",
+  "version": {
+    "Major": 0,
+    "Minor": 3,
+    "Patch": 0
+  },
+  "instanceNameFormat": "Generate Test Summary Report",
+  "inputs": [
+    {
+      "name": "reqIds",
+      "type": "string",
+      "label": "Requirement Ids",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Requirement Ids separated by comma"
+    }
+  ],
+  "execution": {
+    "Node16": {
+      "target": "index.js"
+    }
+  }
+}
