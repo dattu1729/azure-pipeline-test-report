@@ -28,7 +28,7 @@ steps:
     workingDir: tasks/generate-test-report
     verbose: false
 
-- task: PackageAzureDevOpsExtension@2
+- task: PackageAzureDevOpsExtension@3
   displayName: 'TFX: Package Extension'
   inputs:
     rootFolder: .
@@ -39,7 +39,7 @@ steps:
     patternManifest: 'azure-devops-extension.json'
   condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'master'))
 
-- task: PackageAzureDevOpsExtension@2
+- task: PackageAzureDevOpsExtension@3
   displayName: 'TFX: Package Extension Dev'
   inputs:
     rootFolder: .
@@ -54,7 +54,7 @@ steps:
     patternManifest: 'azure-devops-extension.json'
   condition: and(succeeded(), ne(variables['Build.SourceBranchName'], 'master'))
 
-- task: PublishAzureDevOpsExtension@2
+- task: PublishAzureDevOpsExtension@3
   displayName: 'TFX: Publish Extension Dev'
   inputs:
     connectedServiceName: Marketplace
@@ -69,7 +69,7 @@ steps:
     patternManifest: 'azure-devops-extension.json'
   condition: and(succeeded(), ne(variables['Build.SourceBranchName'], 'master'))
 
-- task: ShareAzureDevOpsExtension@2
+- task: ShareAzureDevOpsExtension@3
   displayName: 'TFX: Share Extension'
   inputs:
     connectedServiceName: Marketplace
