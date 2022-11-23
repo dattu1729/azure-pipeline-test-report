@@ -4,9 +4,12 @@ trigger:
     - master
 
 workspace:
-  clean: all   
+  clean: all
 
 steps:
+- checkout: self
+  clean: true
+
 - task: NodeTool@0
   inputs:
     versionSpec: '16.x'
