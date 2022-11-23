@@ -95,7 +95,7 @@ steps:
     connectTo: 'VsTeam'
     connectedServiceName: 'Marketplace'
     method: 'vsix'
-    vsixFile: '**.vsix'
+    vsixFile: '**-1.0.$(Build.BuildId).vsix'
     accounts: 'datpaldev'
   condition: and(succeeded(), ne(variables['Build.SourceBranchName'], 'master'))
 
