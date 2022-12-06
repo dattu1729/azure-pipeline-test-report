@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   target: 'web',
+
   entry: {
     "test-report-tab/index": "./src/test-report-tab/index.tsx",
   },
@@ -19,6 +20,28 @@ module.exports = {
   },
   stats: {
     warnings: false,
+  },
+  devServer: {
+    port: 3000,
+    devMiddleware: {
+            writeToDisk: true,
+            index: false
+
+    },
+    proxy: {
+      '/api': {
+        target:  'http://localhost:8080',
+        "secure": false,
+        "changeOrigin": true
+      }
+    },
+    static: {
+      directory: path.join(__dirname, "./dist/test-report-tab"),
+    },
+    hot: false,
+    open: true,
+    liveReload: true,
+    historyApiFallback: true
   },
   module: {
     rules: [

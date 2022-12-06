@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   target: 'node',
   entry: {
-    "index": "./index.ts",
+    "index": "./index.ts"
   },
   output: {
     filename: '[name].js',
@@ -20,6 +20,9 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
+        options: {
+        configFile: "tsconfig.json"
+    },
         exclude: /node_modules/,
       }
     ]
