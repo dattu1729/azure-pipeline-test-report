@@ -15,6 +15,14 @@
   "instanceNameFormat": "Generate Test Summary Report",
   "inputs": [
     {
+      "name": "MyService",
+      "type": "connectedService:myservice",
+      "label": "My service/server end point",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Select the My Service end point to use."
+    },
+    {
       "name": "reqIds",
       "type": "string",
       "label": "Requirement Ids",

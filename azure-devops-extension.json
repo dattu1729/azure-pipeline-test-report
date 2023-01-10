@@ -10,10 +10,7 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "scopes": [
-    "vso.build_execute",
-    "vso.release_execute"
-  ],
+  "scopes": ["vso.build_execute", "vso.release_execute"],
   "description": "Test Report",
   "galleryFlags": [],
   "categories": ["Azure Pipelines"],
@@ -21,9 +18,7 @@
     "default": "images/extension-icon.png"
   },
   "demands": [],
-  "tags": [
-    "Test Report"
-  ],
+  "tags": ["Test Report"],
   "content": {
     "details": {
       "path": "overview.md"
@@ -32,9 +27,7 @@
       "path": "LICENSE"
     }
   },
-  "branding": {
-
-  },
+  "branding": {},
   "screenshots": [],
   "files": [
     {
@@ -75,6 +68,57 @@
         "dynamic": true
       },
       "includes": ["ms.vss-releaseManagement-web.release-service-data-external"]
+    },
+    {
+      "id": "my-service-endpoint",
+      "description": "Service endpoint type for My connections",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": ["ms.vss-endpoint.endpoint-types"],
+      "properties": {
+        "name": "myservice",
+        "displayName": "My server connection",
+        "url": {
+          "displayName": "My server Url",
+          "helpText": "Url for the My server to connect to."
+        },
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-token",
+            "inputDescriptors": [
+              {
+                "id": "apitoken",
+                "name": "My API Token",
+                "description": "Authentication Token",
+                "inputMode": "passwordbox",
+                "isConfidential": true,
+                "validation": {
+                  "isRequired": true,
+                  "dataType": "string"
+                }
+              }
+            ]
+          }
+        ],
+        "inputDescriptors": [
+          {
+            "id": "proxy",
+            "name": "Proxy",
+            "description": "Proxy URL",
+            "inputMode": "TextBox",
+            "isConfidential": false,
+            "validation": {
+              "isRequired": false,
+              "dataType": "string"
+            },
+            "values": {
+              "inputId": "proxyUrl",
+              "defaultValue": "",
+              "isDisabled": false
+            }
+          }
+        ],
+        "helpMarkDown": ""
+      }
     }
   ]
 }
