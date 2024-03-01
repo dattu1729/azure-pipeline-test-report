@@ -1,0 +1,145 @@
+Prepare detail writeup for demo with "Good Morning Everyone,
+
+Today I'll showcase some ADO performance improvements we've been working on. For today's demo, I have taken java repo with maven build stack and it contains 2 images
+
+let's take a scenario where an engineer working on a new feature, finished development and pushed the feature branch, and created a pull request. Every PR will trigger a build that compiles the code, executes the test cases, and runs the security scans for vulnerabilities. current pipeline took 8 mins to complete the PR build. Improved pipeline took 4 minutes. which is 2X faster.  
+
+PR build was successful and the DEV lead approved the PR and merged the PR to the release branch. He wants to deploy his latest feature to test env. In the current pipeline engineer needs to wait around 16 minutes to deploy the code in test env. whereas enhanced pipeline took around 4mins. Which is around 4X faster than the current pipeline.
+
+How we improved the performance
+- Parallelized all the security scans. In this scenario, once compilation is completed, Sonar, Nexus, and Checkov scans happen concurrently
+- Parallelized container Builds and scans. If the repo has multiple Dockerfiles, then all the Docker builds and scans happen concurrently
+- Cached Build dependencies
+- Providing more options to finetune the Build process as per application needs. Example:
+	- Added deployIncludePattern and deployExcludePattern parameters, teams can control which artifacts can be published to artifactory.
+	- Using buildOptions and deployOptions, teams can control which plugins to execute in which phases 
+	- Using options teams can configure JVM and maven parameters
+	
+we recently started this journey, 
+we will continue working on improving the 
+- we are working on optimizing hardware and agent configuration to achieve better performance. 
+- we are continuing to work on improving the security scan performance
+- more.."
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+Good Morning Everyone!
+Today's Demo: ADO Performance Improvements
+
+I'm excited to showcase some recent improvements we've made to enhance ADO performance. For this demonstration, I'll be using a Java repository with a Maven build stack containing two Docker images.
+
+Scenario:
+
+Imagine an engineer has completed development on a new feature, pushed their branch, and created a pull request (PR). Traditionally, the pipeline for this PR would involve:
+
+Compilation
+Test execution
+Security scans (Sonar, Nexus, Checkov)
+Deployment to the test environment
+This entire process previously took 8 minutes for PR builds and 16 minutes for deployments, leading to inefficiencies in the development workflow.
+
+Improvements:
+
+We've implemented several enhancements to significantly reduce these timeframes:
+
+Parallelization:
+Security scans (Sonar, Nexus, Checkov) now run concurrently after compilation is complete.
+If the repository has multiple Dockerfiles, their builds and scans also occur concurrently.
+Caching: Build dependencies are now cached, further reducing build times.
+Customization Options:
+We've introduced parameters like deployIncludePattern and deployExcludePattern to allow teams to fine-tune which artifacts are published to Artifactory.
+buildOptions and deployOptions enable control over which plugins execute in specific phases.
+Teams can configure JVM and Maven parameters through additional options.
+Results:
+
+These improvements have resulted in dramatic speed increases:
+
+PR builds: Now complete in 4 minutes, twice as fast as before.
+Deployments: Now take only 4 minutes, offering a fourfold improvement over the previous time.
+Looking Forward:
+
+We're committed to continuous improvement in this area:
+
+Hardware and Agent Optimization: We're exploring ways to further enhance performance through hardware and agent configuration optimization.
+Security Scan Performance: Ongoing efforts focus on improving the efficiency of security scans.
+We believe these enhancements will significantly streamline your development workflow and increase overall productivity. Thank you for your time!
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ADO Performance Improvements Demo
+Good morning everyone!
+
+Today, I'm excited to showcase some significant performance improvements we've recently implemented in ADO. These enhancements aim to streamline your development workflow and accelerate delivery times.
+
+Demo Scenario:
+
+For this demo, we'll use a Java repository with a Maven build stack containing two Docker images. We'll simulate the workflow of an engineer completing a feature, pushing it to a branch, and deploying it to a test environment.
+
+Current vs. Improved Pipeline Performance:
+
+Pull Request Build:
+
+Current: 8 minutes
+Improved: 4 minutes (2x faster)
+Test Environment Deployment:
+
+Current: 16 minutes
+Improved: 4 minutes (4x faster)
+How We Achieved These Improvements:
+
+Parallelization:
+Security scans (Sonar, Nexus, Checkov) now run concurrently after compilation, significantly reducing overall build time.
+Docker builds and scans for multiple Dockerfiles within the repo are now executed simultaneously.
+Caching:
+Build dependencies are cached, eliminating the need to download them repeatedly, further improving build speed.
+Customization:
+We've introduced new options to fine-tune the build process based on specific application needs:
+deployIncludePattern and deployExcludePattern parameters allow teams to control which artifacts are published to Artifactory.
+buildOptions and deployOptions enable control over which plugins are executed in different phases.
+Additional options allow configuration of JVM and Maven parameters.
+Looking Forward:
+
+We are committed to continuous improvement and are working on several initiatives to further enhance performance:
+
+Hardware and Agent Optimization: We are analyzing hardware and agent configurations to identify further optimization opportunities.
+Security Scan Performance: We are actively working to optimize the performance of security scans.
+Additional Features: We are exploring other features to further streamline development workflows and accelerate delivery.
+Thank you for your attention! We welcome any questions or feedback.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+ADO Performance Improvements Demo
+Good morning everyone!
+
+Today, I'm excited to showcase some significant performance improvements we've recently implemented in ADO. These enhancements aim to streamline your development workflow and accelerate delivery times.
+
+Demo Scenario:
+
+For this demo, we'll use a Java repository with a Maven build stack containing two Docker images. We'll simulate the workflow of an engineer completing a feature, pushing it to a branch, and deploying it to a test environment.
+
+Current vs. Improved Pipeline Performance:
+
+Pull Request Build:
+
+Current: 8 minutes
+Improved: 4 minutes (2x faster)
+Test Environment Deployment:
+
+Current: 16 minutes
+Improved: 4 minutes (4x faster)
+How We Achieved These Improvements:
+
+Parallelization:
+Security scans (Sonar, Nexus, Checkov) now run concurrently after compilation, significantly reducing overall build time.
+Docker builds and scans for multiple Dockerfiles within the repo are now executed simultaneously.
+Caching:
+Build dependencies are cached, eliminating the need to download them repeatedly, further improving build speed.
+Customization:
+We've introduced new options to fine-tune the build process based on specific application needs:
+deployIncludePattern and deployExcludePattern parameters allow teams to control which artifacts are published to Artifactory.
+buildOptions and deployOptions enable control over which plugins are executed in different phases.
+Additional options allow configuration of JVM and Maven parameters.
+Looking Forward:
+
+We are committed to continuous improvement and are working on several initiatives to further enhance performance:
+
+Hardware and Agent Optimization: We are analyzing hardware and agent configurations to identify further optimization opportunities.
+Security Scan Performance: We are actively working to optimize the performance of security scans.
+Additional Features: We are exploring other features to further streamline development workflows and accelerate delivery.
+Thank you for your attention! We welcome any questions or feedback.
